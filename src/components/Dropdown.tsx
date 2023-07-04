@@ -4,10 +4,10 @@ export interface IDropdown{
    name:string,
    href:string
 }
-function Dropdown({dropdownArry,droplist,setlist}:{dropdownArry:IDropdown[],droplist:boolean,setlist:any}) { 
+function Dropdown({dropdownArry,droplist,setlist,style}:{dropdownArry:IDropdown[],droplist:boolean,setlist:any,style?:string}) { 
     return (
         <>
-            <div id="dropdown" className={`${droplist ? "block": "hidden"} md:absolute md:z-20 md:top-14 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
+            <div id="dropdown" className={`${droplist ? "block": "hidden"} lg:absolute md:z-20 md:top-14 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 ${style}`}>
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                     {
                         dropdownArry.map((e:IDropdown,i:number)=>(

@@ -34,7 +34,7 @@ export function Button({
         id="button"
         disabled ={loading}
         className={`px-5 rounded-bl-lg rounded-tr-lg py-2 flex items-center gap-1 ${buttonStyle}`}
-        onClick={()=>{click.param  ? click.fxn(): click.fxn(!click.param)}}
+        onClick={()=>{click.param  ? click.fxn(click.param): click.fxn()}}
       >
         {icon ? 
         <Image 

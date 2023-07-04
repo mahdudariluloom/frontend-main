@@ -27,11 +27,16 @@ function Header(){
    
     return (
         <div>
-            <nav className="bg-yellow-600 transition duration-1000 md:bg-gray-600 sticky top-0 left-0 right-0 z-10 px-1 lg:px-15">
-                  <div className="flex justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:px-8">
-                  <div className="flex items-end py-3 md:py-5 md:flex-row-reverse md: gap-5">
+            <nav className="bg-yellow-600 md:bg-gray-600 sticky top-0 left-0 right-0 z-10 px-1 lg:px-8">
+                <div className="xl:flex justify-between items-center">
+                  <div className="flex justify-between items-center py-5">
 
-                <div className="xl:hidden">
+                <div className="w-full block text-center">
+                  <Link href={"/"}>
+                    <h2 className="text-2xl text-gray-600 md:text-yellow-600 font-bold">DARIL-ULOOM</h2>
+                  </Link>
+                </div>
+                <div className="lg:hidden">
                   <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400"
                   onClick={()=> setNavbar(!navbar)}
@@ -41,20 +46,15 @@ function Header(){
                     }
                   </button>
                 </div>
-                <div className="">
-                  <Link href={"/"}>
-                    <h2 className="text-2xl text-gray-600 md:text-yellow-600 font-bold">DARIL-ULOOM</h2>
-                  </Link>
-                </div>
             </div>
-          <div className="flex items-center">
-            <div className={`flex gap-4 justify-self-center pb-3 xl:block md:pb-0 md:mt-0 ${navbar ? " absolute right-0 bg-yellow-600 w-full" : "hidden"}`}>
-                  <ul className="h-screen md:h-auto items-center justify-center md:flex">
+          <div  className={`lg:border-t-2 lg:border-t-yellow-600 xl:border-none`}>
+            <div className={`${navbar ? "absolute z-20 bg-yellow-600 md:bg-gray-600 w-full left-0" :"hidden lg:block"}`}>
+                  <ul className="h-auto px-4 lg:flex md:items-center lg:justify-center py-2"> 
                         <Link href={''}>
-                          <li className="md:px-5 text-gray-600 md:text-yellow-600 hover:text-gray-600 md:hover:text-yellow-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">HOME</li>
+                          <li className="py-4 lg:py-0 md:px-5 text-gray-600 md:text-yellow-600 hover:text-gray-600 md:hover:text-yellow-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">HOME</li>
                         </Link>
                         <Link href={''}>
-                          <li className="md:px-5 text-gray-600 md:text-yellow-600 hover:text-gray-600 md:hover:text-yellow-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">NEWS</li>
+                          <li className="py-4 lg:py-0 md:px-5 text-gray-600 md:text-yellow-600 hover:text-gray-600 md:hover:text-yellow-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">NEWS</li>
                         </Link>
 
                  <div>
@@ -62,40 +62,42 @@ function Header(){
                       onClick={()=> setDroplist(!droplist)}
                       id="dropdownDefaultButton" 
                       data-dropdown-toggle="dropdown" 
-                      className="md:px-5 inline-flex items-center hover:cursor-pointer text-white md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">
+                      className="py-4 lg:py-0 md:px-5 inline-flex items-center hover:cursor-pointer text-gray-600 md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">
                           ADMISSION  <ArrowDown />
                           </li>
-                          <Dropdown setlist={setDroplist} droplist={droplist} dropdownArry={subnavList} />
+                          <Dropdown style="lg:top-28 xl:top-14" setlist={setDroplist} droplist={droplist} dropdownArry={subnavList} />
                  </div>
                     <div>
                         <li 
                       onClick={()=> setDropAcc(!dropAcc)}  
                       id="dropdownDefaultButton" 
                       data-dropdown-toggle="dropdown" 
-                      className="md:px-5 inline-flex items-center hover:cursor-pointer text-white md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">
+                      className="py-4 lg:py-0 md:px-5 inline-flex items-center hover:cursor-pointer text-gray-600 md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">
                           ACADEMICS <ArrowDown />
                           </li>
-                          <Dropdown setlist={setDropAcc} droplist={dropAcc} dropdownArry={subnavList} />
+                          <Dropdown style="lg:top-28 xl:top-14" setlist={setDropAcc} droplist={dropAcc} dropdownArry={subnavList} />
                         </div>
                         
                         <Link href={""}> 
-                          <li className="md:px-5 text-gray-600 md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">ABOUT</li>
+                          <li className="py-4 lg:py-0 md:px-5 text-gray-600 md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">ABOUT</li>
                         </Link>
                         <Link href={""}>
-                          <li className="md:px-5 text-gray-600 md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">CONTACT</li>
+                          <li className="py-4 lg:py-0 md:px-5 text-gray-600 md:text-yellow-600 md:hover:text-yellow-600 hover:text-gray-600 hover:font-bold hover:transition hover:duration-1000 hover:ease-in-out">CONTACT</li>
                         </Link>
+
+                        <li className="py-4 lg:py-0 sm:flex sm:gap-2 md:px-5">
+                          <div>
+                        <Button click={{fxn:setLogin,param: !login}}  name="Login" type={`submit`} buttonStyle=" border border-gray-600 md:border-yellow-600 text-gray-600 md:text-yellow-600 gap-0" dropdown={true} />
+                            <Dropdown setlist={setLogin} droplist={login} dropdownArry={category} />
+                          </div>
+                          <div className="my-3 sm:my-0">
+                          <Button click={{fxn:setSignup,param: !signup}} name="Signup" type={`submit`} buttonStyle=" border border-gray-600 md:border-yellow-600 text-gray-600 md:text-yellow-600 gap-0" dropdown={true} />
+                          <Dropdown setlist={setSignup} droplist={signup} dropdownArry={category} />
+                          </div>
+                        </li>
                   </ul>
                 </div>
-                <div className="flex md:gap-2 md:px-5 border">
-                  <div className="">
-                 <Button  name="Login" type={`submit`} buttonStyle=" border border-gray-600 lg:border-yellow-600 text-gray-600 lg:text-yellow-600 gap-0" dropdown={true} />
-                    <Dropdown setlist={setLogin} droplist={login} dropdownArry={category} />
-                  </div>
-                  <div>
-                  <Button name="Signup" type={`submit`} buttonStyle=" border border-gray-600 lg:border-yellow-600 text-gray-600 lg:text-yellow-600 gap-0" dropdown={true} />
-                  <Dropdown setlist={setSignup} droplist={signup} dropdownArry={category} />
-                  </div>
-                 </div>
+                
             </div>
                </div>
             </nav>
