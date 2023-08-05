@@ -1,5 +1,5 @@
 "use client"
-import Avatar from "root/components/Avatar";
+import Avatar from "../components/Avatar";
 // import { Carousel } from "root/components/Utilities";
 import BodyLayout from "../components/BodyLayout";
 // import { slidesList } from "root/utils/others/carouselSlides.utils";

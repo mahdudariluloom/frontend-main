@@ -1,6 +1,6 @@
 import { baseURL } from "../../../environment";
 import { IVerifyCode } from "./auth.interface";
-import { postData } from "root/utils/services/signup";
+import { postData } from "../../utils/services/signup";
 const url = ""
 // const url = baseURL + `/verifyCode?email=${email}`;
 function verifycode({values,setLoading,query}:{values:any, setLoading:any,query:any}){

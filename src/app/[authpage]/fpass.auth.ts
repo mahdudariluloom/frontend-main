@@ -1,5 +1,5 @@
 import { IForgetPassword } from "./auth.interface";
-import { postData } from "root/utils/services/signup";
+import { postData } from "../../utils/services/signup";
 const url = "";
 function forgetpassword({values,setLoading}:{values:any, setLoading:any}){
     const url = "forgetPassword";

@@ -1,5 +1,5 @@
 import { ILogin } from "./auth.interface";
-import { postData } from "root/utils/services/signup";
+import { postData } from "../../utils/services/signup";
 const url = "";
 function login({values,setLoading}:{values:any, setLoading:any}){
     const val = postData<ILogin>(url,values).pipe().subscribe(

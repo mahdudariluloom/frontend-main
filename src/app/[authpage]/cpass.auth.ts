@@ -1,5 +1,5 @@
 
-import { postData } from "root/utils/services/signup";
+import { postData } from "../../utils/services/signup";
 import { IconfirmPassword } from "./auth.interface";
 
 

@@ -1,8 +1,7 @@
-"use client"
 import { useSearchParams, useParams } from "next/navigation";
 import {useEffect,useState} from 'react'
-import Card from "root/components/Form/Card";
-import Form from "root/components/Form/Form";
+import Card from "../../components/Form/Card";
+import Form from "../../components/Form/Form";
 import { initialSignupValues, loginValidation, initialLoginValues, signupValidation, vcValidation,fpValidation,passchangeValidation,initialvcValues, initpasschangeValues, initialfpValues } from "root/components/Form/Validation/authpage.validation";
 import dynamic from "next/dynamic";
 

@@ -1,5 +1,5 @@
 import { Signup } from "./auth.interface";
-import { postData } from "root/utils/services/signup";
+import { postData } from "../../utils/services/signup";
 
 function signup({values,setLoading}:{values:any, setLoading:any}){
     const url = "users"
