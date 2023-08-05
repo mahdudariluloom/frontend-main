@@ -1,3 +1,4 @@
+"use client"
 import { useSearchParams, useParams } from "next/navigation";
 import {useEffect,useState} from 'react'
 import Card from "../../components/Form/Card";
