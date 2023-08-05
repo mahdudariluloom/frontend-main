@@ -1,6 +1,6 @@
 "use client"
-import { useState } from "react";
-import { Spinner, ArrowDown } from "./Icons";
+import dynamic from "next/dynamic";
+// import { ArrowDown } from "./Icons";
 import Image from "next/image";
 
 
@@ -11,7 +11,7 @@ interface Ibutton{
     buttonStyle?: string,
     iconStyle?: {src:string | any,style:string,width:number,height:number},
     icon?:boolean,
-    click?:{fxn:any,param?:any,},
+    click?:any,
     dropdown?:boolean
 }
 export function Button({
@@ -25,6 +25,8 @@ export function Button({
   buttonStyle,
 }: Ibutton){
 
+  const Spinner = dynamic(()=> import("root/components/Icons/Spinner"),{ssr:false})
+  const ArrowDown = dynamic(()=> import("root/components/Icons/ArrowDown"),{ssr:false})
   return (
     <>
     {
@@ -34,7 +36,7 @@ export function Button({
         id="button"
         disabled ={loading}
         className={`px-5 rounded-bl-lg rounded-tr-lg py-2 flex items-center gap-1 ${buttonStyle}`}
-        onClick={()=>{click.param  ? click.fxn(click.param): click.fxn()}}
+        onClick={click}
       >
         {icon ? 
         <Image 

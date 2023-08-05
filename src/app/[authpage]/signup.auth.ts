@@ -2,7 +2,7 @@ import { Signup } from "./auth.interface";
 import { postData } from "root/utils/services/signup";
 
 function signup({values,setLoading}:{values:any, setLoading:any}){
-    const url = "/users"
+    const url = "users"
     const val = postData<Signup>(url,values).subscribe(
         {
             next:(data)=>{

@@ -1,46 +1,34 @@
 "use client"
 import { useSearchParams, useParams } from "next/navigation";
+import {useEffect,useState} from 'react'
 import Card from "root/components/Form/Card";
 import Form from "root/components/Form/Form";
 import { initialSignupValues, loginValidation, initialLoginValues, signupValidation, vcValidation,fpValidation,passchangeValidation,initialvcValues, initpasschangeValues, initialfpValues } from "root/components/Form/Validation/authpage.validation";
-import Notfound from "root/utils/notfound";
-import signUp from "./signup.auth";
-import Login from "./login.auth";
-import Verifycode from "./verifyCode.auth";
-import Cpass from "./confirmpassword.auth";
-import Fpass from "./forgetpassword.auth";
-import Link from "next/link"; "next/link"
+import dynamic from "next/dynamic";
 
 
+ function Auth() {
+    const { authpage } = useParams();
+    const [page, setPage] = useState({default:""})
+    const [data, setData] = useState({default:[]})
 
-function Signup() {
+    useEffect(()=>{
+        const pageLoad = async () => {
+            setData(await import(`./Data/${authpage}.data`))
+            setPage(await import(`./${authpage}.auth`))
+        }
+        pageLoad()
+    },[authpage])
+
+    const Link = dynamic(()=>import('next/link'))
+    const NotFound = dynamic(()=>import('root/utils/notfound'))
+
     const whiteList: Array<string> = ["login", 'signup', "fpass", "cpass", "verifyCode"]
     const roles: Array<string> = ["student", "admin", "parent"]
+
     const getrole: any = useSearchParams().get("role");
     const email:string | any = useSearchParams().get("email");
     const isConfirm:boolean | any = useSearchParams().get("isConfirm");
-    const { authpage } = useParams();
-
-    const signup = [
-        { label: "Name", name: "name", type: "text" },
-        { label: "Email", name: "email", type: "email" },
-        { label: "Phone Number", name: "phoneNo", type: "text" },
-        { label: "Password", name: "password", type: "password" },
-    ];
-    const login = [
-        { label: "Email", name: "email", type: "email" },
-        { label: "Password", name: "password", type: "password" },
-    ];
-    const fpass = [
-        { label: "Email", name: "email", type: "email", placeholder: "Enter your Email" },
-        { label: "Phone Number", name: "phoneNo", type: "text", placeholder: "Enter your Phone Number" }
-    ];
-    const verifycode = [
-        { label: "Verification Code", name: "verifyCode", type: "password", placeholder: "Enter the verification code" },
-    ];
-    const cpass = [
-        { label: "New Password", name: "newPassword", type: "password" },
-    ];
 
     return (
         <>
@@ -75,15 +63,10 @@ function Signup() {
                                     }
                                     </div>
                                 </div>
+                    
                                 <Form
                                 query={{email,isConfirm,role:getrole}}
-                                    func={
-                                        authpage === "signup" ? signUp :
-                                                authpage === "login" ? Login :
-                                                authpage === "verifyCode" ? Verifycode :
-                                                    authpage === "cpass" ? Cpass :
-                                                        authpage === "fpass" ? Fpass : ""
-                                    }
+                                    func={page.default}
                                     buttonLabel={
                                         authpage === "signup" ? 'Sign Up' :
                                             authpage === "login" ? 'Login' :
@@ -105,15 +88,9 @@ function Signup() {
                                         authpage === "cpass" ? passchangeValidation :
                                         authpage === "fpass" ? fpValidation  : ""
                                     }
-                                    formArr={
-                                        authpage === "signup" ? signup :
-                                            authpage === "login" ? login :
-                                                authpage === "verifyCode" ? verifycode :
-                                                    authpage === "cpass" ? cpass :
-                                                        authpage === "fpass" ? fpass : []
-                                    }
+                                    formArr={data.default}
                                 />
-                                <div className="flex justify-between mt-4 py-4 border-t-2 border-yellow-600">
+                                <div className={`flex justify-between mt-4 py-4 border-t-2 border-yellow-600 ${getrole=="admin"? "hidden" : ""}`}>
                                     {
                                      authpage === "login" ? 
                                      <span>
@@ -124,21 +101,21 @@ function Signup() {
                                      <span>
                                         Already have an account... <Link href={`login?role=${getrole}`}>Login</Link>
                                      </span>  :
-                                     <span className="hidden"></span>
+                                     ""
                                     }
                                     { authpage === "login" ?
                                         <Link href={`fpass?role=${getrole}`}>Forget Password</Link>
-                                        : <span className="hidden"></span>
+                                        : ""
                                     }
                                     
                                 </div>
                             </Card>
                         </div>
                     </div>
-                    : <Notfound />
+                    : <NotFound />
             }
         </>
     )
 }
 
-export default Signup;
+export default Auth;
