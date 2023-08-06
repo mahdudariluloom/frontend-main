@@ -23,7 +23,7 @@ import dynamic from "next/dynamic";
     const Link = dynamic(()=>import('next/link'))
     const NotFound = dynamic(()=>import('root/utils/notfound'))
 
-    const whiteList: Array<string> = ["login", 'signup', "fpass", "cpass", "verifyCode"] satisfies Array<string>
+    const whiteList: any= ["login", 'signup', "fpass", "cpass", "verifyCode"];
     const roles: Array<string> = ["student", "admin", "parent"]
 
     const getrole: any = useSearchParams().get("role");
@@ -33,7 +33,7 @@ import dynamic from "next/dynamic";
     return (
         <>
             {
-                whiteList.includes(authpage) && roles.includes(getrole)
+                whiteList?.includes(authpage) && roles.includes(getrole)
                     ?
                     <div className="grid grid-cols-none w-full md:grid-cols-3">
                         <div className="bg-yellow-600 px-5 hidden md:block ">
