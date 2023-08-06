@@ -23,7 +23,7 @@ import dynamic from "next/dynamic";
     const Link = dynamic(()=>import('next/link'))
     const NotFound = dynamic(()=>import('root/utils/notfound'))
 
-    const whiteList: Array<string> = ["login", 'signup', "fpass", "cpass", "verifyCode"]
+    const whiteList: Array<string> = ["login", 'signup', "fpass", "cpass", "verifyCode"] satisfies Array<string>
     const roles: Array<string> = ["student", "admin", "parent"]
 
     const getrole: any = useSearchParams().get("role");
